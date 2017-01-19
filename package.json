@@ -7,7 +7,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "sampleModules": "node sample_modules.js"
+    "sampleModules": "node sample_modules.js",
+    "sampleConsumer": "node sample_consumer.js"
   },
   "dependencies": {
     "no-kafka": "git://github.com/crcastle/kafka.git#3.0"
