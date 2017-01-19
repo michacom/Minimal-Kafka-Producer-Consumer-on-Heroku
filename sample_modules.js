@@ -9,11 +9,11 @@ const K = require('no-kafka');
 const fs = require('fs' );
 fs.writeFileSync('./client.crt', process.env.KAFKA_CLIENT_CERT);
 fs.writeFileSync('./client.key', process.env.KAFKA_CLIENT_CERT_KEY);
-;
+
 const producer = new K.Producer({
 	    clientId: 'sample-module-producer',
 	    connectionString: KAFKA_URL.replace(/\+ssl/g, ''),
-	    ssl: { cert: './client.crt', key: './client.key', },
+	    ssl: { certFile: './client.crt', keyFile: './client.key', },
 	});
 
 
