@@ -10,7 +10,7 @@ const fs = require('fs' );
 fs.writeFileSync('./client.crt', KAFKA_CLIENT_CERT);
 fs.writeFileSync('./client.key', KAFKA_CLIENT_CERT_KEY);
 
-const consumer = new Kafka.SimpleConsumer({
+const consumer = new K.SimpleConsumer({
     idleTimeout: 100,
     clientId: 'sample-module-consumer',
     connectionString: url.replace(/\+ssl/g,''),
