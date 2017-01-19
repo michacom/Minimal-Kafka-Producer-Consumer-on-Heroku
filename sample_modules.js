@@ -1,6 +1,6 @@
 'use strict';
 
-const { KAFKA_TOPIC: KAFKA_TOPIC, KAFKA_CLIENT_CERT: KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY: KAFKA_CLIENT_CERT_KEY, KAFKA_URL: KAFKA_URL } = process.env;
+const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL } = process.env;
 if ([ 'KAFKA_TOPIC', 'KAFKA_CLIENT_CERT', 'KAFKA_CLIENT_CERT_KEY', 'KAFKA_URL', ].some(
 	(key) => { if (!(key in process.env)) throw new Error(`Missing ${ key } enviroment value!`); }
 ))
