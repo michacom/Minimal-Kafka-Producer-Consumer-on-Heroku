@@ -1,0 +1,20 @@
+{
+  "name": "dev-kafka-workers",
+  "version": "0.0.1",
+  "description": "US-505",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "sampleModules": "node sample_modules.js"
+  },
+  "dependencies": {
+    "no-kafka": "git://github.com/crcastle/kafka.git#3.0"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "kafka"
+  ]
+}
