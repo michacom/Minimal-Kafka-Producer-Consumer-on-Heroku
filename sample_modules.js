@@ -14,7 +14,7 @@ const producer = new K.Producer({
 
 
 producer.
-	init();
+	init().
 	then(() => {
 		producer.send({
 			topic: KAFKA_TOPIC,
