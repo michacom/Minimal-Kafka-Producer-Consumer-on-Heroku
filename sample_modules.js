@@ -17,7 +17,7 @@ const producer = new K.Producer({
 producer.
 	init().
 	then(() => {
-		for (var msg of sampleGen())
+		for (var msg of sampleGen(1))
 			producer.send({
 				topic: KAFKA_TOPIC,
 				message: {
