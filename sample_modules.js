@@ -22,6 +22,7 @@ producer.
 			message: {
 			    value: 'AAA',
 			},
+		});
 		
 		// for (var msg of sampleGen(1))
 		// 	producer.send({
