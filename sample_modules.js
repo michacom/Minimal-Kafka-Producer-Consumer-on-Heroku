@@ -8,7 +8,7 @@ const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL } = pro
 
 const K = require('no-kafka');
 
-const producer = new Kafka.Producer({
+const producer = new K.Producer({
 	    clientId: 'sample-module-producer',
 	    connectionString: KAFKA_URL.replace(/\+ssl/g, ''),
 	    ssl: { cert: KAFKA_CLIENT_CERT, key: KAFKA_CLIENT_CERT_KEY, },
