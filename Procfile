@@ -1,1 +1,1 @@
-sampleModules: npm sampleModules
+sampleModules: npm run sampleModules
