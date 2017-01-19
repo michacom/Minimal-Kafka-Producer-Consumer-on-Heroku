@@ -13,7 +13,7 @@ fs.writeFileSync('./client.key', KAFKA_CLIENT_CERT_KEY);
 const consumer = new K.SimpleConsumer({
     idleTimeout: 100,
     clientId: 'sample-module-consumer',
-    connectionString: url.replace(/\+ssl/g,''),
+    connectionString: KAFKA_URL.replace(/\+ssl/g,''),
     ssl: { certFile: './client.crt', keyFile: './client.key', }
 });
 
