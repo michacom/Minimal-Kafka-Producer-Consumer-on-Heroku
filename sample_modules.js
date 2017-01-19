@@ -1,9 +1,7 @@
 'use strict';
 
-if ([ 'KAFKA_TOPIC', 'KAFKA_CLIENT_CERT', 'KAFKA_CLIENT_CERT_KEY', 'KAFKA_URL', ].some(
-	(key) => { if (!(key in process.env)) throw new Error(`Missing ${ key } enviroment value!`); }
-))
-	return;
+if ([ 'KAFKA_TOPIC', 'KAFKA_CLIENT_CERT', 'KAFKA_CLIENT_CERT_KEY', 'KAFKA_URL', ].some( (key) => !(key in process.env) ))
+	throw new Error(`Missing ${ key } enviroment value!`);
 const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL } = process.env;
 
 const K = require('no-kafka');
@@ -20,6 +18,7 @@ producer.
 		for (var msg of sampleGen(1))
 			producer.send({
 				topic: KAFKA_TOPIC,
+				partition: 0,
 				message: {
 				    value: JSON.stringify(msg),
 				},
