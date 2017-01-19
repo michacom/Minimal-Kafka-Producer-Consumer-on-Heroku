@@ -1,2 +1,2 @@
-sampleModules: npm run sampleModules
 sampleConsumer: npm run sampleConsumer
+sampleModules: npm run sampleModules
