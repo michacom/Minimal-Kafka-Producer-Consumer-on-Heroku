@@ -20,22 +20,14 @@ const producer = new K.Producer({
 producer.
 	init().
 	then(() => {
-		producer.send({
-			topic: KAFKA_TOPIC,
-			partition: 0,
-			message: {
-			    value: 'AAA',
-			},
-		});
-		
-		// for (var msg of sampleGen(1))
-		// 	producer.send({
-		// 		topic: KAFKA_TOPIC,
-		// 		partition: 0,
-		// 		message: {
-		// 		    value: JSON.stringify(msg),
-		// 		},
-		// 	});
+		for (var msg of sampleGen(5))
+			producer.send({
+				topic: KAFKA_TOPIC,
+				partition: 0,
+				message: {
+				    value: JSON.stringify(msg),
+				},
+			});
 	});
 
 //TODO in production replace the generator with real http calls
