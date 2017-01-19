@@ -10,7 +10,7 @@
     "sampleModules": "node sample_modules.js"
   },
   "dependencies": {
-    "no-kafka": "git://github.com/crcastle/kafka.git"
+    "no-kafka": "git://github.com/crcastle/kafka.git#3.0"
   },
   "keywords": [
     "node",
