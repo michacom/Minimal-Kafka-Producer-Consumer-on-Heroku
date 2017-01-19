@@ -12,6 +12,9 @@ const producer = new K.Producer({
 	    ssl: { cert: KAFKA_CLIENT_CERT, key: KAFKA_CLIENT_CERT_KEY, },
 	});
 
+console.log('producer', producer);
+throw new Error('STOP THERE');
+
 producer.
 	init().
 	then(() => {
