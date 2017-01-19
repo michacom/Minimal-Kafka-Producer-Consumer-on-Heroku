@@ -1,22 +1,17 @@
 'use strict';
 
-const {
-	KAFKA_TOPIC: consumerTopic,
-	KAFKA_CLIENT_CERT: cert,
-	KAFKA_CLIENT_CERT_KEY: key,
-	KAFKA_URL: url,
-} = process.env;
+const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL, } = process.env;
+if ([ 'KAFKA_TOPIC', 'KAFKA_CLIENT_CERT', 'KAFKA_CLIENT_CERT_KEY', 'KAFKA_URL', ].some(
+	(key) => { if (!(key in process.env)) throw new Error(`Missing ${ key } enviroment value!`); }
+))
+	return;
 
 const K = require('no-kafka');
 
-const fs = require('fs' );
-fs.writeFileSync('./client.crt', process.env.KAFKA_CLIENT_CERT);
-fs.writeFileSync('./client.key', process.env.KAFKA_CLIENT_CERT_KEY);
-
 const producer = new Kafka.Producer({
 	    clientId: 'sample-module-producer',
-	    connectionString: url.replace(/\+ssl/g, ''),
-	    ssl: { cert: cert, key: key, },
+	    connectionString: KAFKA_URL.replace(/\+ssl/g, ''),
+	    ssl: { cert: KAFKA_CLIENT_CERT, key: KAFKA_CLIENT_CERT_KEY, },
 	});
 
 producer.
