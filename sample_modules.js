@@ -15,18 +15,23 @@ const producer = new K.Producer({
 
 producer.
 	init();
-console.log('producer', producer);
-throw new Error('STOP THERE');
-	// then(() => {
-	// 	for (var msg of sampleGen(1))
-	// 		producer.send({
-	// 			topic: KAFKA_TOPIC,
-	// 			partition: 0,
-	// 			message: {
-	// 			    value: JSON.stringify(msg),
-	// 			},
-	// 		});
-	// });
+	then(() => {
+		producer.send({
+			topic: KAFKA_TOPIC,
+			partition: 0,
+			message: {
+			    value: 'AAA',
+			},
+		
+		// for (var msg of sampleGen(1))
+		// 	producer.send({
+		// 		topic: KAFKA_TOPIC,
+		// 		partition: 0,
+		// 		message: {
+		// 		    value: JSON.stringify(msg),
+		// 		},
+		// 	});
+	});
 
 //TODO in production replace the generator with real http calls
 function* sampleGen(i = 5) {
