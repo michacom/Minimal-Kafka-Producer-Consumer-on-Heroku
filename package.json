@@ -11,7 +11,8 @@
     "sampleConsumer": "node sample_consumer.js"
   },
   "dependencies": {
-    "no-kafka": "git://github.com/crcastle/kafka.git#3.0"
+    "no-kafka": "git://github.com/crcastle/kafka.git#3.0",
+    "express": "4.13.3"
   },
   "keywords": [
     "node",
