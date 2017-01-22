@@ -30,12 +30,12 @@ producer.
 		})
 	)); );
 
-var reqGen = function* () {};
-
 const app = express();
 
 app.
 	set('port', (PORT || 5000)).
+
+	get('/', ((req, res) => res.sendStatus(200))).
 
 	post('/module', ((req, res) => {
 		var jreq = JSON.parse(req.body);
@@ -46,6 +46,7 @@ app.
 		} else
 			stream.write(jreq);
 
+		res.sendStatus(200);
 	})).
 	
 	.listen(app.get('port'), (() => console.log.bind(`Node app is running on port ${ app.get('port') }`)));
