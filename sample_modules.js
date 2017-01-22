@@ -7,8 +7,8 @@ const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL } = pro
 const K = require('no-kafka');
 
 const fs = require('fs' );
-fs.writeFileSync('./client.crt', process.env.KAFKA_CLIENT_CERT);
-fs.writeFileSync('./client.key', process.env.KAFKA_CLIENT_CERT_KEY);
+fs.writeFileSync('./client.crt', KAFKA_CLIENT_CERT);
+fs.writeFileSync('./client.key', KAFKA_CLIENT_CERT_KEY);
 
 const producer = new K.Producer({
 	    clientId: 'sample-module-producer',
