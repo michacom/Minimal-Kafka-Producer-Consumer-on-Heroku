@@ -19,4 +19,8 @@ const consumer = new K.SimpleConsumer({
 
 return consumer.
 	init().
-	then( () => consumer.subscribe(KAFKA_TOPIC, console.log.bind(console, `from KAFKA topic: ${ KAFKA_TOPIC }`)) );
+	then(() => {
+		console.log(`subscribed to KAFKA topic: ${ KAFKA_TOPIC }`);
+
+		consumer.subscribe(KAFKA_TOPIC, ([{message:{value}}]) => console.log(`from KAFKA topic: ${ value.toJSON() }`))
+	});
