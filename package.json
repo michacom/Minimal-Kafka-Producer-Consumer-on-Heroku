@@ -5,7 +5,6 @@
   "engines": {
     "node": "6.9.4"
   },
-  "main": "index.js",
   "scripts": {
     "restPublisher": "node rest_publisher.js",
     "sampleModules": "node sample_modules.js",
