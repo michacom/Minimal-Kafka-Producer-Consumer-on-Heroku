@@ -46,11 +46,14 @@ const app = express();
 app.
 	set('port', PORT).
 
+	use(require('body-parser').json()).
+
 	get('/', ((req, res) => res.sendStatus(200))).
 
 	post('/module/loudcloud', ((req, res) => {
-		console.log()
-		var jreq = JSON.parse(req.body);
+		console.log(req.body);
+		
+		var jreq = req.body;
 
 		if (Array.isArray(jreq)) {
 			for (var m of jreq)
