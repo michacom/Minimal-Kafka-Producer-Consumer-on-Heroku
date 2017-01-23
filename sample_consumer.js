@@ -22,5 +22,5 @@ return consumer.
 	then(() => {
 		console.log(`subscribed to KAFKA topic: ${ KAFKA_TOPIC }`);
 
-		consumer.subscribe(KAFKA_TOPIC, ([{message:{value}}]) => console.log(`from KAFKA topic: ${ b.toString() }`))
+		consumer.subscribe(KAFKA_TOPIC, ([{message:{value}}]) => console.log(`from KAFKA topic: ${ value.toString() }`))
 	});
