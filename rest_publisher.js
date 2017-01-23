@@ -6,7 +6,7 @@ const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL, PORT =
 
 const kafka = require('no-kafka');
 const express = require('express');
-const stream = require('stream').Duplex;
+// const stream = require('stream').Duplex;
 
 const fs = require('fs' );
 fs.writeFileSync('./client.crt', KAFKA_CLIENT_CERT);
@@ -19,16 +19,24 @@ const producer = new kafka.Producer({
 	});
 
 producer.
-	init().
-	then(() => stream.on('data', ((msg) =>
-		producer.send({
-			topic: KAFKA_TOPIC,
-			partition: 0,
-			message: {
-			    value: msg,
-			},
-		})
-	)));
+	init();
+	// then(() => stream.on('data', ((msg) =>
+	// 	producer.send({
+	// 		topic: KAFKA_TOPIC,
+	// 		partition: 0,
+	// 		message: {
+	// 		    value: msg,
+	// 		},
+	// 	})
+	// )));
+
+const send = msg => producer.send({
+		topic: KAFKA_TOPIC,
+		partition: 0,
+		message: {
+		    value: msg,
+		},
+	})
 
 const app = express();
 
@@ -42,9 +50,11 @@ app.
 
 		if (Array.isArray(jreq)) {
 			for (var m of jreq)
-				stream.write(m);
+				send(m);
+				// stream.write(m);
 		} else
-			stream.write(jreq);
+			send(jreq);
+			// stream.write(jreq);
 
 		res.sendStatus(200);
 	})).
