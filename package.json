@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "no-kafka": "git://github.com/crcastle/kafka.git#3.0",
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "body-parser": "*"
   },
   "keywords": [
     "node",
