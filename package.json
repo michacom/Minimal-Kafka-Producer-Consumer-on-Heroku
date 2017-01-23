@@ -7,6 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "restPublisher": "node rest_publisher.js",
     "sampleModules": "node sample_modules.js",
     "sampleConsumer": "node sample_consumer.js"
   },
