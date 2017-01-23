@@ -1,7 +1,7 @@
 'use strict';
 
 if ([ 'KAFKA_TOPIC', 'KAFKA_CLIENT_CERT', 'KAFKA_CLIENT_CERT_KEY', 'KAFKA_URL', ].some( (key) => !(key in process.env) ))
-	throw new Error(`Missing ${ key } enviroment value!`);
+	throw new Error(`Missing enviroment value!`);
 const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL, PORT = 5000 } = process.env;
 
 const kafka = require('no-kafka');
