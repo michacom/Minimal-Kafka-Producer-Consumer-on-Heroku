@@ -28,7 +28,7 @@ producer.
 			    value: msg,
 			},
 		})
-	)); );
+	)));
 
 const app = express();
 
