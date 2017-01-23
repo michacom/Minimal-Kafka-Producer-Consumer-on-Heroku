@@ -2,7 +2,7 @@
 
 if ([ 'KAFKA_TOPIC', 'KAFKA_CLIENT_CERT', 'KAFKA_CLIENT_CERT_KEY', 'KAFKA_URL', ].some( (key) => !(key in process.env) ))
 	throw new Error(`Missing ${ key } enviroment value!`);
-const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL, PORT } = process.env;
+const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL, PORT = 5000 } = process.env;
 
 const kafka = require('no-kafka');
 const express = require('express');
@@ -33,7 +33,7 @@ producer.
 const app = express();
 
 app.
-	set('port', (PORT || 5000)).
+	set('port', PORT).
 
 	get('/', ((req, res) => res.sendStatus(200))).
 
@@ -49,4 +49,4 @@ app.
 		res.sendStatus(200);
 	})).
 	
-	.listen(app.get('port'), (() => console.log.bind(`Node app is running on port ${ app.get('port') }`)));
+	listen(PORT, (() => console.log.bind(`Node app is running on port ${ PORT }`)));
