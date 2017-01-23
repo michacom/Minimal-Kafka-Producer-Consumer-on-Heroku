@@ -34,7 +34,10 @@ const send = msg => producer.send({
 		topic: KAFKA_TOPIC,
 		partition: 0,
 		message: {
-		    value: msg,
+		    value: JSON.stringify({
+    			sourceSystemCode: 'loudcloud',
+    			sourceSystemID: msg.Id,
+    		}),
 		},
 	})
 
@@ -45,7 +48,8 @@ app.
 
 	get('/', ((req, res) => res.sendStatus(200))).
 
-	post('/module', ((req, res) => {
+	post('/module/loudcloud', ((req, res) => {
+		console.log()
 		var jreq = JSON.parse(req.body);
 
 		if (Array.isArray(jreq)) {
