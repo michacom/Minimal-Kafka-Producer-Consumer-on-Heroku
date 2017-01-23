@@ -6,7 +6,6 @@ const { KAFKA_TOPIC, KAFKA_CLIENT_CERT, KAFKA_CLIENT_CERT_KEY, KAFKA_URL, PORT =
 
 const kafka = require('no-kafka');
 const express = require('express');
-// const stream = require('stream').Duplex;
 
 const fs = require('fs' );
 fs.writeFileSync('./client.crt', KAFKA_CLIENT_CERT);
@@ -18,17 +17,7 @@ const producer = new kafka.Producer({
 	    ssl: { certFile: './client.crt', keyFile: './client.key', },
 	});
 
-producer.
-	init();
-	// then(() => stream.on('data', ((msg) =>
-	// 	producer.send({
-	// 		topic: KAFKA_TOPIC,
-	// 		partition: 0,
-	// 		message: {
-	// 		    value: msg,
-	// 		},
-	// 	})
-	// )));
+producer.init();
 
 const send = msg => producer.send({
 		topic: KAFKA_TOPIC,
@@ -48,20 +37,17 @@ app.
 
 	use(require('body-parser').json()).
 
-	get('/', ((req, res) => res.sendStatus(200))).
+	get('/', ((req, res) => res.send(
+		'REST Endpoints:\n' +
+		'/module/loudcloud\n'
+	))).
 
 	post('/module/loudcloud', ((req, res) => {
-		console.log(req.body);
-		
-		var jreq = req.body;
-
-		if (Array.isArray(jreq)) {
-			for (var m of jreq)
+		if (Array.isArray(req.body)) {
+			for (var m of req.body)
 				send(m);
-				// stream.write(m);
 		} else
-			send(jreq);
-			// stream.write(jreq);
+			send(req.body);
 
 		res.sendStatus(200);
 	})).
